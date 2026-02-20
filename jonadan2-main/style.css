@@ -1,0 +1,154 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+}
+
+.calendar-container {
+  margin-top: 40px;
+  width: 360px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.calendar-header button {
+  background-color: #e0ecff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.calendar-header button:hover {
+  background-color: #b8d4ff;
+}
+
+#calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.day {
+  max-height: 80px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  background-color: #f9fbfd;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px #d0d6dc; /* ✅ 사각형 박스 효과 */
+  padding: 5px;
+}
+
+
+.day:hover {
+  background-color: #eef5ff;
+}
+
+.today {
+  border: 2px solid #50a8ff;
+  background-color: #dceeff;
+}
+
+.event {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 3em; /* ✅ 약 6자 분량 공간 확보 */
+  display: inline-block;
+  font-size: 0.5em;
+  background-color: #edf3ff;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+
+
+
+.event.done {
+  color: #999;
+  text-decoration: line-through;
+  background-color: #f0f0f0;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weekday-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #4a4a4a;
+}
+
+@media (max-width: 480px) {
+  .quick-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 공통 버튼 스타일 */
+.quick-links a {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 0.85em;
+  font-weight: bold;
+  transition: 0.2s;
+  text-align: center;
+}
+
+/* 각각의 색상 테마 */
+.btn-cloud  { background-color: #4a90e2; }
+.btn-dinner { background-color: #f25c54; }
+.btn-note   { background-color: #2ecc71; }
+.btn-gangnam { background-color: #ffb347; }
+.btn-mrblog { background-color: #9b59b6; }
+.btn-place  { background-color: #34495e; }
+.btn-revu   { background-color: #e67e22; }
+.btn-come   { background-color: #1abc9c; }
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.quick-links a:hover {
+  opacity: 0.85;
+}
+
+button, input[type="file"] {
+  font-size: 0.9em;
+}

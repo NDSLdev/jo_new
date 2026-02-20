@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인 일정 달력</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCwTZxL5tu3fqiOerLdN4U7HYu0YZnCbS4",
+	  authDomain: "jonadan-f7ed2.firebaseapp.com",
+	  projectId: "jonadan-f7ed2",
+	  storageBucket: "jonadan-f7ed2.firebasestorage.app",
+	  messagingSenderId: "995834220339",
+	  appId: "1:995834220339:web:cd19208ff49bd0edf1f846",
+	  measurementId: "G-75Z9BVFYYF"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    window.db = db;
+    window.firestoreFns = {
+      collection: (db, name) => db.collection(name),
+      addDoc: async (col, data) => col.add(data),
+      getDocs: async (col) => col.get(),
+      deleteDoc: async (docRef) => docRef.delete(),
+      updateDoc: async (docRef, data) => docRef.update(data),
+      doc: (db, collection, id) => db.collection(collection).doc(id),
+      getDoc: async (docRef) => docRef.get(),
+      setDoc: async (docRef, data) => docRef.set(data),
+    };
+  </script>
+</head>
+
+<body>
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button onclick="prevMonth()">◀</button>
+      <span id="month-year">2025년 7월</span>
+      <button onclick="nextMonth()">▶</button>
+    </div>
+
+    <div class="weekday-header">
+      <div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div><div>일</div>
+    </div>
+
+    <div class="calendar-grid" id="calendar-grid"></div>
+
+    <div class="quick-links">
+      <a href="https://www.cloudreview.co.kr" class="btn-cloud" target="_blank">클라우드리뷰</a>
+      <a href="https://dinnerqueen.net" class="btn-dinner" target="_blank">디너의여왕</a>
+      <a href="https://www.reviewnote.co.kr" class="btn-note" target="_blank">리뷰노트</a>
+      <a href="https://xn--939au0g4vj8sq.net" class="btn-gangnam" target="_blank">강남맛집</a>
+      <a href="https://www.mrblog.net" class="btn-mrblog" target="_blank">미블</a>
+      <a href="https://www.reviewplace.co.kr" class="btn-place" target="_blank">리뷰플레이스</a>
+      <a href="https://www.revu.net" class="btn-revu" target="_blank">레뷰</a>
+      <a href="https://www.cometoplay.kr" class="btn-come" target="_blank">놀러와체험단</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
